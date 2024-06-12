@@ -5,7 +5,7 @@ import Message from "./Message";
 import useListenMessages from "../../hooks/useListenMessages";
 import useConversation from "../../zustand/useConversation";
 
-const Messages=(selectedConversation)=>{
+const Messages=()=>{
     const {selectedConversation}=useConversation();
     const  {messages,loading}=useGetMessages();
     useListenMessages();
