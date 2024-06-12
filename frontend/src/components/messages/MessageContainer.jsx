@@ -25,7 +25,7 @@ const MessageContainer=()=>{
                         <span className="text-gray-900 font-bold">{selectedConversation.fullName}</span>
                     </div>
 
-                    <Messages />
+                    <Messages selectedConversation={selectedConversation}/>
                     <MessageInput />
                 </>
             )}

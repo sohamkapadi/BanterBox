@@ -3,8 +3,10 @@ import useGetMessages from "../../hooks/useGetMessages";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 import useListenMessages from "../../hooks/useListenMessages";
+import useConversation from "../../zustand/useConversation";
 
-const Messages=()=>{
+const Messages=(selectedConversation)=>{
+    const {selectedConversation}=useConversation();
     const  {messages,loading}=useGetMessages();
     useListenMessages();
     const lastMessageRef=useRef();
@@ -14,10 +16,12 @@ const Messages=()=>{
             lastMessageRef.current?.scrollIntoView({behaviour:"smooth"});
         },100);
     },[messages]);
+
+    const filteredMessages = messages.filter(message => message.conversationId === selectedConversation?.id);
     return (
         <div className="px-4 flex-1 overflow-auto">
-            {!loading && messages.length >0 && messages.map((message)=>(
-                <div key={message._id} ref={lastMessageRef}>
+             {!loading && filteredMessages.length > 0 && filteredMessages.map((message, index) => (
+                <div key={message._id} ref={index === filteredMessages.length - 1 ? lastMessageRef : null}>
                     <Message message={message} />
                 </div>
             ))}

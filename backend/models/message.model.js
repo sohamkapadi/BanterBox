@@ -15,6 +15,11 @@ const messageSchema =new mongoose.Schema({
         type:String,
         required:true,
     },
+    conversationId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Conversation",
+        required: true, // Ensure every message is associated with a conversation
+    },
     //  for createdAt, updatedAt 
 }, {timestamps:true});
 
