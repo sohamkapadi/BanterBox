@@ -1,6 +1,7 @@
 import {useAuthContext} from "../../context/AuthContext";
 import { extractTime } from "../../utils/extractTime";
 import useConversation from "../../zustand/useConversation";
+import { BsCheck2All } from "react-icons/bs";
 const Message=({message})=>{
     const {authUser}=useAuthContext();
     const {selectedConversation}=useConversation();
@@ -10,6 +11,8 @@ const Message=({message})=>{
     const bubbleBgColor= fromMe ? "bg-blue-500" : "";
     const formattedTime=extractTime(message.createdAt);
     const shakeClass=message.shouldShake ? "shake" : "";
+
+    const seen=false;
 
     return (
         <div className={`chat ${chatClassName}`}>
@@ -22,8 +25,9 @@ const Message=({message})=>{
             </div>
             <div className={`chat-bubble text-white ${bubbleBgColor} ${shakeClass} pb-2`}>{message.message}</div>
             <div className="chat-footer opacity-50 text-xs text-white font-semibold flex gap-1 items-center">{formattedTime}</div>
+            
         </div>
-    );
+    );  
 };
 
 export default Message;

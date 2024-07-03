@@ -15,12 +15,12 @@ export const SocketContextProvider=({children})=>{
 
     useEffect(()=>{
         if(authUser){
-            const socket=io("https://chat-app-ceco.onrender.com",{
+            const socket=io("http://localhost:5000",{      // https://chat-app-ceco.onrender.com
                 query:{
                     userId :authUser._id,
                 },
             });
-
+            
             setSocket(socket);
 
             socket.on("getOnlineUsers",(users)=>{

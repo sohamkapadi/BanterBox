@@ -4,12 +4,14 @@ import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 import useListenMessages from "../../hooks/useListenMessages";
 import useConversation from "../../zustand/useConversation";
+import { useAuthContext } from "../../context/AuthContext";
 
 const Messages=()=>{
     const  {messages,loading}=useGetMessages();
     useListenMessages();
     const lastMessageRef=useRef();
-
+    const { authUser } = useAuthContext();
+    
     useEffect(()=>{
         setTimeout(()=>{
             lastMessageRef.current?.scrollIntoView({behaviour:"smooth"});
@@ -18,7 +20,7 @@ const Messages=()=>{
 
     return (
         <div className="px-4 flex-1 overflow-auto">
-             {!loading && messages.length > 0 && messages.map((message) => (
+            {!loading && messages.length > 0 && messages.map((message) => (
 					<div key={message._id} ref={lastMessageRef}>
 						<Message message={message} />
 					</div>
