@@ -1,6 +1,6 @@
-# ChatApp
+# BanterBox
 
-Welcome to **ChatApp**! A real-time chat application built using the MERN stack, Socket.io, and TailwindCSS. This application supports real-time messaging, user authentication, and online status tracking.
+Welcome to **BanterBox**! A real-time chat application built using the MERN stack, Socket.io, and TailwindCSS. This application supports real-time messaging, user authentication, and online status tracking.
 
 ## Table of Contents
 
@@ -85,7 +85,7 @@ The application uses React Router for navigation. Here are the routes available 
 - **GET /api/users:** Get users for sidebar display.
 
 ## Contributing
-We welcome contributions to ChatApp! Please follow these steps:
+We welcome contributions to BanterBox! Please follow these steps:
  - Fork the repository.
  - Create a new branch for your feature or bugfix.
  - Commit your changes.
